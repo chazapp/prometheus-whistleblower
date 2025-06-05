@@ -2,7 +2,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ include "prometheus-whistleblower.fullname" . }}
+  name: {{ include "prometheus-whistleblower.name" . }}
   annotations:
     {{- toYaml .Values.ingress.annotations | nindent 4 }}
 spec:

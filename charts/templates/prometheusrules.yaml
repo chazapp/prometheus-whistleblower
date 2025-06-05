@@ -2,7 +2,7 @@
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
-  name: {{ include "prometheus-whistleblower.fullname" . }}
+  name: {{ include "prometheus-whistleblower.name" . }}
 {{- if .Values.serviceMonitor.labels }}
   labels:
 {{- range $key, $value := .Values.serviceMonitor.labels }}

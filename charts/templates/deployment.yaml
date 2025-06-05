@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "prometheus-whistleblower.fullname" . }}
+  name: {{ include "prometheus-whistleblower.name" . }}
   labels:
     app: {{ include "prometheus-whistleblower.name" . }}
 spec:
