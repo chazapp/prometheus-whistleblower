@@ -18,11 +18,11 @@ spec:
   endpoints:
     - port: http
       interval: {{ .Values.serviceMonitor.interval }}
+      relabelings:
+        - sourceLabels: []
+          targetLabel: release
+          replacement: {{ include "prometheus-whistleblower.fullname" . }}
+
   namespaceSelector:
     matchNames:
       - {{ .Release.Namespace }}
-  relabelings:
-    - sourceLabels: []
-      targetLabel: release
-      replacement: {{ include "prometheus-whistleblower.fullname" . }}
-{{- end }}
