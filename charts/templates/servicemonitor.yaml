@@ -22,7 +22,7 @@ spec:
         - sourceLabels: []
           targetLabel: release
           replacement: {{ include "prometheus-whistleblower.fullname" . }}
-
   namespaceSelector:
     matchNames:
       - {{ .Release.Namespace }}
+{{- end }}
