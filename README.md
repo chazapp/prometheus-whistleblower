@@ -32,9 +32,13 @@ A Dockerfile is available in this repository and has been published to ghcr.io:
 $ docker pull ghcr.io/chazapp/prometheus-whistleblower
 ```
 
-An Helm chart is also available for deployment on Kubernetes. The Chart can configure a `kind: ServiceMonitor`
-for integration with Prometheus-Operator and allow the service to be scraped by your Kubernetes Prometheus instances.
-It can optionally template a `kind: PrometheusRule` which deploys a single alerting rule:
+An Helm chart is also available for deployment on Kubernetes.
+
+```bash
+$ helm install prometheus-whistleblower oci://ghcr.io/chazapp/helm-charts/prometheus-whistleblower
+```
+
+The Chart can configure a `kind: ServiceMonitor` for integration with Prometheus-Operator and allow the service to be scraped by your Kubernetes Prometheus instances. It can optionally template a `kind: PrometheusRule` which deploys a single alerting rule:
 
 ```yaml
 rules:
@@ -56,7 +60,7 @@ The project is a simple Go-Gin HTTP server implementing `prometheus-client` Coll
 `GET /metrics/json` -> Returns exposed metrics in JSON  
 `DELETE /metric/:id` -> Removes a metric stop being exposing it on the `/metrics` endpoint.  
 
-The Go-Gin server serves a very simple HTML/CSS/JS UI accessible on `GET /` which allows interactions with the server easily.
+The Go-Gin server serves a very simple HTML/CSS/JS UI accessible via browser on `GET /` which allows interactions with the server easily.
 
 Created metrics are living in-memory and are not persistent accross restarts.
 

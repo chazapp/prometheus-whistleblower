@@ -3,8 +3,14 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: {{ include "prometheus-whistleblower.fullname" . }}
+{{- if .Values.serviceMonitor.labels }}
   labels:
-    release: prometheus
+{{- range $key, $value := .Values.serviceMonitor.labels }}
+    {{ $key }}: {{ $value | quote }}
+{{- end }}
+{{- else }}
+  labels: {}
+{{- end }}
 spec:
   selector:
     matchLabels:
