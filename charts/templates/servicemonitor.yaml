@@ -21,4 +21,8 @@ spec:
   namespaceSelector:
     matchNames:
       - {{ .Release.Namespace }}
+  relabelings:
+    - sourceLabels: []
+      targetLabel: release
+      replacement: {{ include "prometheus-whistleblower.fullname" . }}
 {{- end }}

@@ -16,7 +16,7 @@ spec:
     - name: prometheus-whistleblower.rules
       rules:
         - alert: WhistleblowerAlerts
-          expr: '{service="prometheus-whistleblower"}'
+          expr: '{release="{{ include "prometheus-whistleblower.fullname" . }}"}'
           annotations:
             summary: "Whistleblower raising an alert"
             description: "The whistleblower service is exposing metrics."
