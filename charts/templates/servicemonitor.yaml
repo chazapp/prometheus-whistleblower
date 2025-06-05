@@ -1,0 +1,18 @@
+{{- if .Values.serviceMonitor.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "prometheus-whistleblower.fullname" . }}
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: {{ include "prometheus-whistleblower.name" . }}
+  endpoints:
+    - port: http
+      interval: {{ .Values.serviceMonitor.interval }}
+  namespaceSelector:
+    matchNames:
+      - {{ .Release.Namespace }}
+{{- end }}

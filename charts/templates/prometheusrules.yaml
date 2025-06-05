@@ -1,0 +1,17 @@
+{{- if .Values.prometheusRules.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: {{ include "prometheus-whistleblower.fullname" . }}
+  labels:
+    release: prometheus
+spec:
+  groups:
+    - name: prometheus-whistleblower.rules
+      rules:
+        - alert: WhistleblowerAlerts
+          expr: '{service="prometheus-whistleblower"}'
+          annotations:
+            summary: "Whistleblower raising an alert"
+            description: "The whistleblower service is exposing metrics."
+{{- end }}

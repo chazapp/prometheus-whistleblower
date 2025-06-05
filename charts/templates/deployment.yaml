@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "prometheus-whistleblower.fullname" . }}
+  labels:
+    app: {{ include "prometheus-whistleblower.name" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "prometheus-whistleblower.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "prometheus-whistleblower.name" . }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          args:
+            - "--port={{ .Values.service.port }}"
+          ports:
+            - containerPort: {{ .Values.service.port }}
+              name: http
+          resources: {{- toYaml .Values.resources | nindent 12 }}

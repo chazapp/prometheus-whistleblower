@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script src="assets/script.js"></script>
+    <title>Prometheus Whistleblower</title>
+  </head>
+  <div id="root">
+    <div id="side-nav">
+      <img src="assets/logo.png" />
+      <h2><i>Prometheus<br/>Whistleblower</i></h2>
+      <hr class="solid" />
+    </div>
+    <div id="content">
+      <div id="disclaimer">
+        <h3>
+          Configure a metric and submit it. It will be exposed on this server's <code>GET /metrics</code> handler.
+        </h3>
+      </div>
+      <p id="prom-input-error" class="error"></p>
+      <div id="prom-input">
+          <input type="text" id="in-metric" placeholder="Metric" />
+          <input type="text" inputmode="numeric" id="in-value" placeholder="Value" pattern="\d+" />
+          <button id="in-submit" onclick="submitMetric()">Submit</input>
+      </div>
+      <hr class="solid" id="content-divider" />
+      <div id="exposed-metrics">
+        <p id="metrics-table-error" class="error"></p>
+        <table id="metrics-table">  
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Labels</th>
+              <th>Value</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody id="metrics-table-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</html>

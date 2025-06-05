@@ -1,0 +1,96 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+code {
+  background-color: darkgrey;
+}
+
+#root {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+
+#side-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width:15%;
+  height: 100%;
+  background-color: darkred;
+  color: white;
+}
+
+#side-nav img {
+  max-width: 75%;
+  max-height: 75%;
+}
+
+hr.solid {
+  border-top: #FFF;
+  width: 75%;
+}
+
+#content-divider {
+  margin: 5%;
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2%;
+  margin-top: 5%;
+  width: 100%;
+}
+
+
+#prom-input {
+  display: flex;
+  flex-direction: row;
+  gap: 1%;
+  height: 3vh;
+  width: 50%;
+}
+
+#in-metric {
+  width: 70%;
+  height: 100%;
+}
+
+#in-value {
+  width: 15%;
+  height: 100%;
+}
+
+#in-submit {
+  height: 100%;
+}
+
+input:invalid{
+  outline: 2px solid red;
+  border: 2px solid red;
+}
+
+#exposed-metrics {
+  width: 100%;
+}
+
+#metrics-table {
+  width: 80%;
+}
+
+thead {
+  background-color: rgb(228 240 245);
+}
+
+td {
+  text-align: center
+}
+
+.error {
+  color: red;
+}
