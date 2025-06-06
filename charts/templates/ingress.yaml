@@ -17,7 +17,7 @@ spec:
             pathType: {{ .pathType }}
             backend:
               service:
-                name: {{ include "prometheus-whistleblower.fullname" $ }}
+                name: {{ include "prometheus-whistleblower.name" $ }}
                 port:
                   number: {{ $.Values.service.port }}
           {{- end }}
